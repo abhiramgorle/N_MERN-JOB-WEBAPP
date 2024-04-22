@@ -17,7 +17,7 @@ const MyJobs = () => {
     const fetchJobs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3000/job/getmyjobs",
+          "https://n-mern-job-webapp-pge9.onrender.com/job/getmyjobs",
           { withCredentials: true }
         );
         setMyJobs(data.myjobs);
@@ -47,7 +47,7 @@ const MyJobs = () => {
   const handleUpdateJob = async (jobId) => {
     const updatedJob = myJobs.find((job) => job._id === jobId);
     await axios
-      .put(`http://localhost:3000/job/update/${jobId}`, updatedJob, {
+      .put(`https://n-mern-job-webapp-pge9.onrender.com/job/update/${jobId}`, updatedJob, {
         withCredentials: true,
       })
       .then((res) => {
@@ -62,7 +62,7 @@ const MyJobs = () => {
   //Function For Deleting Job
   const handleJobDelete = async (jobId) => {
     await axios
-      .delete(`http://localhost:3000/job/delete/${jobId}`, {
+      .delete(`https://n-mern-job-webapp-pge9.onrender.com/job/delete/${jobId}`, {
         withCredentials: true,
       })
       .then((res) => {

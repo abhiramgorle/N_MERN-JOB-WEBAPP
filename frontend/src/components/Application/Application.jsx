@@ -36,7 +36,7 @@ const Application = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/application/post",
+        "https://n-mern-job-webapp-pge9.onrender.com/application/post",
         formData,
         {
           withCredentials: true,

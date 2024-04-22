@@ -18,7 +18,7 @@ const MyApplications = () => {
     try {
       if (user && user.role === "Employer") {
         axios
-          .get("http://localhost:3000/application/employer/getall", {
+          .get("https://n-mern-job-webapp-pge9.onrender.com/application/employer/getall", {
             withCredentials: true,
           })
           .then((res) => {
@@ -26,7 +26,7 @@ const MyApplications = () => {
           });
       } else {
         axios
-          .get("http://localhost:3000/application/jobseeker/getall", {
+          .get("https://n-mern-job-webapp-pge9.onrender.com/application/jobseeker/getall", {
             withCredentials: true,
           })
           .then((res) => {
@@ -45,7 +45,7 @@ const MyApplications = () => {
   const deleteApplication = (id) => {
     try {
       axios
-        .delete(`http://localhost:3000/application/delete/${id}`, {
+        .delete(`https://n-mern-job-webapp-pge9.onrender.com/application/delete/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

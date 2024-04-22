@@ -10,7 +10,7 @@ const Jobs = () => {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:3000/job/getall", {
+        .get("https://n-mern-job-webapp-pge9.onrender.com/job/getall", {
           withCredentials: true,
         })
         .then((res) => {

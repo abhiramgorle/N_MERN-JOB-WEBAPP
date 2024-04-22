@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user/getuser", { withCredentials: true});
+        const response = await axios.get("https://n-mern-job-webapp-pge9.onrender.com/user/getuser", { withCredentials: true});
         setUser(response.data.user);
         setIsAuthorized(true);
       } catch (error) {
