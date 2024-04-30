@@ -21,7 +21,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/user/register",
+        "https://n-mern-job-webapp-pge9.onrender.com/user/register",
         { name, email, password, phone, role },
         {
           withCredentials: true,

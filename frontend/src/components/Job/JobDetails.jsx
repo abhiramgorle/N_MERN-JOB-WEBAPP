@@ -13,7 +13,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/job/${id}`, {
+      .get(`https://n-mern-job-webapp-pge9.onrender.com/job/${id}`, {
         withCredentials: true,
         headers: {
           'Authorization': `Bearer ${token}`
