@@ -7,13 +7,17 @@ const JobDetails = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
   const navigateTo = useNavigate();
+  const token = localStorage.getItem("token");
 
   const { isAuthorized, user } = useContext(Context);
 
   useEffect(() => {
     axios
-      .get(`https://n-mern-job-webapp-pge9.onrender.com/job/${id}`, {
+      .get(`http://localhost:4000/job/${id}`, {
         withCredentials: true,
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       })
       .then((res) => {
         setJob(res.data.job);

@@ -15,6 +15,7 @@ const Application = () => {
   const { isAuthorized, user } = useContext(Context);
 
   const navigateTo = useNavigate();
+  const token = localStorage.getItem("token");
 
   // Function to handle file input changes
   const handleFileChange = (e) => {
@@ -36,12 +37,13 @@ const Application = () => {
 
     try {
       const { data } = await axios.post(
-        "https://n-mern-job-webapp-pge9.onrender.com/application/post",
+        "http://localhost:4000/application/post",
         formData,
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "multipart/form-data",
+            'Authorization': `Bearer ${token}`
           }
         }
       );

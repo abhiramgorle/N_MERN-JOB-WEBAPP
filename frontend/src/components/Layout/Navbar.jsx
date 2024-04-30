@@ -9,15 +9,20 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthorized, setIsAuthorized, user } = useContext(Context);
   const navigateTo = useNavigate();
+  const token = localStorage.getItem("token");
 
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "https://n-mern-job-webapp-pge9.onrender.com/user/logout",
+        "http://localhost:4000/user/logout",
         {
-          withCredentials: true
+          withCredentials: true,
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         }
       );
+      localStorage.removeItem("token");
       toast.success(response.data.message);
       setIsAuthorized(false);
       navigateTo("/login");

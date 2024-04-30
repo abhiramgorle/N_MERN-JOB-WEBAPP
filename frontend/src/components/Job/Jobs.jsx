@@ -6,12 +6,16 @@ import axios from "axios";
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const { isAuthorized } = useContext(Context);
+  const token = localStorage.getItem("token");
   const navigateTo = useNavigate();
   useEffect(() => {
     try {
       axios
-        .get("https://n-mern-job-webapp-pge9.onrender.com/job/getall", {
+        .get("http://localhost:4000/job/getall", {
           withCredentials: true,
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         })
         .then((res) => {
           setJobs(res.data);

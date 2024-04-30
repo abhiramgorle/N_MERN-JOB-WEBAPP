@@ -21,9 +21,10 @@ const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
 
   useEffect(() => {
+    const token = localStorage.getItem('token') || null;
     const fetchUser = async () => {
       try {
-        const response = await axios.get("https://n-mern-job-webapp-pge9.onrender.com/user/getuser", { withCredentials: true});
+        const response = await axios.get("http://localhost:4000/user/getuser", { withCredentials:true,headers:{'Authorization': `Bearer ${token}`}});
         setUser(response.data.user);
         setIsAuthorized(true);
       } catch (error) {

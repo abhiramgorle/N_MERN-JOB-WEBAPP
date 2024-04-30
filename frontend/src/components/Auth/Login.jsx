@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://n-mern-job-webapp-pge9.onrender.com/user/login",
+        "http://localhost:4000/user/login",
         { email, password, role },
         {
           withCredentials: true,
@@ -29,6 +29,7 @@ const Login = () => {
         }
       );
       toast.success(data.message);
+      localStorage.setItem('token', data.token);
       setEmail("");
       setRole("");
       setPassword("");

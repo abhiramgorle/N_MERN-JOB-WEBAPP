@@ -13,21 +13,28 @@ const MyApplications = () => {
 
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     try {
       if (user && user.role === "Employer") {
         axios
-          .get("https://n-mern-job-webapp-pge9.onrender.com/application/employer/getall", {
+          .get("http://localhost:4000/application/employer/getall", {
             withCredentials: true,
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
           })
           .then((res) => {
             setApplications(res.data.applications);
           });
       } else {
         axios
-          .get("https://n-mern-job-webapp-pge9.onrender.com/application/jobseeker/getall", {
+          .get("http://localhost:4000/application/jobseeker/getall", {
             withCredentials: true,
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
           })
           .then((res) => {
             setApplications(res.data.applications);
@@ -45,8 +52,11 @@ const MyApplications = () => {
   const deleteApplication = (id) => {
     try {
       axios
-        .delete(`https://n-mern-job-webapp-pge9.onrender.com/application/delete/${id}`, {
+        .delete(`http://localhost:4000/application/delete/${id}`, {
           withCredentials: true,
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         })
         .then((res) => {
           toast.success(res.data.message);

@@ -10,10 +10,10 @@ import {dbConnection} from "./database/dbConnection.js";
 import {errorMiddleware} from "./middlewares/error.js";
 
 const app = express();
-dotenv.config({path:"./config/config.env"})
+// dotenv.config({path:"./config/config.env"})
 
 app.use(cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: ["http://localhost:5173"],
     methods:["GET", "POST", "DELETE", "PUT"],
     credentials: true
 }))

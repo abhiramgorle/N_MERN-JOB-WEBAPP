@@ -15,6 +15,7 @@ const PostJob = () => {
   const [salaryTo, setSalaryTo] = useState("");
   const [fixedSalary, setFixedSalary] = useState("");
   const [salaryType, setSalaryType] = useState("default");
+  const token = localStorage.getItem("token");
 
   const { isAuthorized, user } = useContext(Context);
 
@@ -32,7 +33,7 @@ const PostJob = () => {
     }
     await axios
       .post(
-        "https://n-mern-job-webapp-pge9.onrender.com/job/post",
+        "http://localhost:4000/job/post",
         fixedSalary.length >= 4
           ? {
             title,
@@ -57,6 +58,8 @@ const PostJob = () => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+            
           },
         }
       )
